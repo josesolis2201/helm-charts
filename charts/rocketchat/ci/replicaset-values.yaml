@@ -3,8 +3,8 @@ mongodb:
   auth:
     username: rocketchat
     database: rocketchat
-    password: password
-    root-password: password
+    password: evoimvwijnvowjmve214
+    rootPassword: password
     replicaSetKey: replicasetkey
   architecture: replicaset
   replicaCount: 3
