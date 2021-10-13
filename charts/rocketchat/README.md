@@ -21,3 +21,12 @@ To uninstall the chart:
 ```
 helm delete my-rocketchat
 ```
+## Required values
+| Key                        | Description                                                                   |
+|----------------------------|-------------------------------------------------------------------------------|
+| mongodb.auth.username      | MongoDB user rocketchat uses to connect to the database                       |
+| mongodb.auth.database      | MongoDB database rocket connects to                                           |
+| mongodb.auth.password      | MongoDB password rocketchat uses to connect to the database                   |
+| mongodb.auth.rootPassword  | MongoDB root password required for rocketchat to connect to the MongoDB OpLog |
+| mongodb.auth.replicaSetKey | MongoDB replicaset key. Required when  mongodb.architecture=replicaset        |
+**When using *mongodb.auth.existingSecret* the *mongodb.auth.password*, *mongodb.auth.rootPassword* and *mongodb.auth.replicaSetKey* values must be passed on through that secret**

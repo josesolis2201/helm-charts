@@ -7,4 +7,3 @@ mongodb:
     rootPassword: password
   architecture: standalone
   replicaCount: 1
-
