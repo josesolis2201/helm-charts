@@ -1,0 +1,12 @@
+mongodb:
+  enabled: true
+  auth:
+    username: rocketchat
+    database: rocketchat
+    password: password
+    root-password: password
+    replicaSetKey: replicasetkey
+  architecture: replicaset
+  replicaCount: 3
+  pdb:
+    minAvailable: 1
