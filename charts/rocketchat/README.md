@@ -21,6 +21,10 @@ To uninstall the chart:
 ```
 helm delete my-rocketchat
 ```
+## MongoDB architecture for RocketChat
+Historically, RocketChat has had compatibility issues with standalone MongoDB architecture.
+If you need a single MongoDB instance, use a replicaSet with a replicaCount of **1**.
+
 ## Required values
 | Key                        | Description                                                                   |
 |----------------------------|-------------------------------------------------------------------------------|
