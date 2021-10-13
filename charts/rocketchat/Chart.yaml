@@ -10,7 +10,7 @@ keywords:
 - nodejs
 - javascript
 maintainers:
-  - name: Jose Solis
+  - name: josesolis2201
     email: josesolisrosales@gmail.com
 dependencies:
   - name: mongodb
