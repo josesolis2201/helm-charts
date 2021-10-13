@@ -74,6 +74,10 @@ mongodb:
 
   architecture: replicaset
   replicaCount: 1
+  arbiter:
+    enabled: false
+    pdb:
+      minAvailable: 0
   pdb:
     minAvailable: 0
 
