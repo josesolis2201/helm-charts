@@ -1,0 +1,10 @@
+mongodb:
+  enabled: true
+  auth:
+    username: rocketchat
+    database: rocketchat
+    password: password
+    rootPassword: password
+  architecture: standalone
+  replicaCount: 1
+
