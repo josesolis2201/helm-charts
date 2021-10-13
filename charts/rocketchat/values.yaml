@@ -66,24 +66,16 @@ mongodb:
 
   # password: password
   # root-password: password
-
-  ## Required when architecture is replicaset
-  # replicaSetKey:
+  # replicaSetKey: replicaSetKey
 
   ## Existing secret with MongoDB&reg; credentials (keys: `mongodb-password`, `mongodb-root-password`, ` mongodb-replica-set-key`)
   ## NOTE: When it's set the previous parameters are ignored.
   # existingSecret: rocketchat-mongodb
 
-  architecture: standalone
+  architecture: replicaset
   replicaCount: 1
-  arbiter:
-    enabled: false
-    pdb:
-      minAvailable: 0
   pdb:
     minAvailable: 0
-
-   # key:
 
   persistence:
     enabled: true
