@@ -17,4 +17,3 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
     version: 10.x.x
     condition: mongodb.enabled
-
