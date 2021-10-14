@@ -75,6 +75,18 @@ spec:
               name: {{ template "rocketchat.fullname" . }}
               key: mail-url
         {{- end }}
+        {{- if .Values.mongodb.auth.existingSecret }}
+        - name: MONGODB_DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.mongodb.auth.existingSecret }}
+              key: mongodb-password
+        - name: MONGODB_ROOT_PASS
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.mongodb.auth.existingSecret }}
+              key: mongodb-root-password
+        {{- end }}
 {{- with .Values.extraEnv }}
 {{ tpl . $ | indent 8 }}
 {{- end }}

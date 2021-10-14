@@ -3,7 +3,7 @@
 ##
 image:
   repository: docker.io/rocketchat/rocket.chat
-  tag: 3.14.5
+  tag: 4.0.1
   pullPolicy: IfNotPresent
 
 ## Host for the application
@@ -53,10 +53,6 @@ affinity: {}
 #         - e2e-az1
 #         - e2e-az2
 
-## MongoDB URL if using an externally provisioned MongoDB
-externalMongodbUrl:  # mongodb://user:password@localhost:27017/rocketchat
-externalMongodbOplogUrl:  # mongodb://user:password@localhost:27017/local?replicaSet=rs0&authSource=admin
-
 ##
 ## MongoDB chart configuration
 ### ref https://github.com/helm/charts/tree/master/stable/mongodb#configuration
@@ -64,12 +60,17 @@ externalMongodbOplogUrl:  # mongodb://user:password@localhost:27017/local?replic
 mongodb:
   ## Enable or disable MongoDB dependency completely.
   enabled: true
+  auth:
+    username: rocketchat
+    database: rocketchat
 
-  # auth.rootPassword:
+  # password: password
+  # root-password: password
+  # replicaSetKey: replicaSetKey
 
-  auth.username: rocketchat
-  # auth.password:
-  auth.database: rocketchat
+  ## Existing secret with MongoDB&reg; credentials (keys: `mongodb-password`, `mongodb-root-password`, ` mongodb-replica-set-key`)
+  ## NOTE: When it's set the previous parameters are ignored.
+  # existingSecret: rocketchat-mongodb
 
   architecture: replicaset
   replicaCount: 1
@@ -79,8 +80,6 @@ mongodb:
       minAvailable: 0
   pdb:
     minAvailable: 0
-
-   # key:
 
   persistence:
     enabled: true
