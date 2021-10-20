@@ -27,7 +27,7 @@ spec:
   {{- end }}
 {{- end }}
   rules:
-  - host: {{ .Values.host }}
+  - host: {{ $ingress.host }}
     http:
       paths:
       - path: {{ $ingress.path }}

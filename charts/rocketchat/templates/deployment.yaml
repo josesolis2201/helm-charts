@@ -11,6 +11,7 @@ metadata:
 {{ toYaml .Values.deploymentLabels | indent 4 }}
     {{- end }}
 spec:
+  revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
@@ -18,8 +19,8 @@ spec:
       app.kubernetes.io/instance: {{ .Release.Name }}
   strategy:
     rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
+      maxSurge: {{ .Values.upgradeStrategy.rollingUpdate.maxSurge }}
+      maxUnavailable: {{ .Values.upgradeStrategy.rollingUpdate.maxUnavailable }}
     type: RollingUpdate
   template:
     metadata:
@@ -64,9 +65,9 @@ spec:
             secretKeyRef:
               name: {{ template "rocketchat.fullname" . }}
               key: mongo-oplog-uri
-        {{- if .Values.host }}
+        {{- if .Values.ingress.host }}
         - name: ROOT_URL
-          value: https://{{ .Values.host }}
+          value: https://{{ .Values.ingress.host }}
         {{- end }}
         {{- if .Values.smtp.enabled }}
         - name: MAIL_URL
